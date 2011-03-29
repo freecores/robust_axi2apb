@@ -1,0 +1,20 @@
+
+------------------------------ Remark ----------------------------------------
+This code is a generic code written in RobustVerilog. In order to convert it to Verilog a RobustVerilog parser is required. 
+It is possible to download a free RobustVerilog parser from www.provartec.com/edatools.
+------------------------------------------------------------------------------
+
+RobustVerilog generic AXI to APB bridge
+
+In order to create the Verilog design use the run.sh script in the run directory (notice that the run scripts calls the robust binary (RobustVerilog parser)).
+
+The RobustVerilog top source file is axi2apb.v, it calls the top definition file named def_axi2apb.txt.
+
+The default definition file def_axi2apb.txt generates a bridge with 8 APB slaves.
+
+Changing the interconnect parameters should be made only in def_axi2apb.txt in the src/base directory (changing slave num etc.).
+
+For any questions / remarks / suggestions / bugs please contact info@provartec.com.
+
+
+
