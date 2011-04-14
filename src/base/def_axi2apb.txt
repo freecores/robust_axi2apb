@@ -27,7 +27,7 @@
 ////                                                             ////
 //////////////////////////////////////////////////////////////////##>
 
-INCLUDE   def_axi2apb_static.txt
+INCLUDE   def_axi2apb_static.txt  
 
 SWAP      #FFD        #1              ## flip-flop delay
 

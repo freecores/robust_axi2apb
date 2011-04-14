@@ -51,7 +51,13 @@ module  PREFIX_axi2apb_cmd (PORTS);
    
    wire                   cmd_push;
    wire                   cmd_pop;
+   wire                   cmd_empty;
+   wire                   cmd_full;
    reg                    read;
+   
+   wire                   wreq, rreq;
+   wire                   wack, rack;
+   wire                   AERR;
    
    
    assign                 wreq = AWVALID;

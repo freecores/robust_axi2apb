@@ -27,7 +27,7 @@
 ////                                                             ////
 //////////////////////////////////////////////////////////////////##>
 
-INCLUDE def_axi2apb.txt
+INCLUDE def_axi2apb.txt 
   OUTFILE PREFIX_axi2apb.v
 
     ITER SX
@@ -39,18 +39,18 @@ INCLUDE def_axi2apb.txt
    port               GROUP_APB_AXI;
    
    //apb slaves
+IFDEF TRUE(SLAVE_NUM==1)
+   port               GROUP_APB3;
+ELSE TRUE(SLAVE_NUM==1)
    output             penable;
    output             pwrite;
    output [ADDR_BITS-1:0] paddr;
    output [31:0]          pwdata;
-
    output                 pselSX;
-   
    input [31:0]           prdataSX;
-   
    input                  preadySX;
-   
    input                  pslverrSX;
+ENDIF TRUE(SLAVE_NUM==1)
 
 
 
@@ -113,21 +113,6 @@ INCLUDE def_axi2apb.txt
                                          STOMP ,
 					 );
       
-   CREATE axi2apb_mux.v
-     PREFIX_axi2apb_mux PREFIX_axi2apb_mux(
-					   .clk(clk),
-					   .reset(reset),
-					   .cmd_addr(cmd_addr),
-					   .psel(psel),
-					   .prdata(prdata),
-					   .pready(pready),
-					   .pslverr(pslverr),
-					   .pselSX(pselSX),
-					   .preadySX(preadySX),
-					   .pslverrSX(pslverrSX),
-					   .prdataSX(prdataSX),
-					   STOMP ,
-					   );
 
    
    CREATE axi2apb_ctrl.v						
@@ -144,7 +129,25 @@ INCLUDE def_axi2apb.txt
 					     .pwrite(pwrite),
 					     .pready(pready)
 					     );
+
    
+IFDEF TRUE(SLAVE_NUM>1)
+   CREATE axi2apb_mux.v
+     PREFIX_axi2apb_mux PREFIX_axi2apb_mux(
+					   .clk(clk),
+					   .reset(reset),
+					   .cmd_addr(cmd_addr),
+					   .psel(psel),
+					   .prdata(prdata),
+					   .pready(pready),
+					   .pslverr(pslverr),
+					   .pselSX(pselSX),
+					   .preadySX(preadySX),
+					   .pslverrSX(pslverrSX),
+					   .prdataSX(prdataSX),
+					   STOMP ,
+					   );
+ENDIF TRUE(SLAVE_NUM>1)
 
 endmodule
 
