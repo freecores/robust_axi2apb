@@ -28,9 +28,9 @@
 //////////////////////////////////////////////////////////////////##>
 
 INCLUDE def_axi2apb.txt
-OUTFILE PREFIX_axi2apb_cmd.v
+OUTFILE PREFIX_cmd.v
 
-module  PREFIX_axi2apb_cmd (PORTS);
+module  PREFIX_cmd (PORTS);
 
    input 		          clk;
    input 		          reset;

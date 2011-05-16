@@ -28,9 +28,9 @@
 //////////////////////////////////////////////////////////////////##>
 
 INCLUDE def_axi2apb.txt
-OUTFILE PREFIX_axi2apb_rd.v
+OUTFILE PREFIX_rd.v
 
-module  PREFIX_axi2apb_rd (PORTS);
+module  PREFIX_rd (PORTS);
 
    input 		          clk;
    input 		          reset;

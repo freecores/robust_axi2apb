@@ -28,10 +28,10 @@
 //////////////////////////////////////////////////////////////////##>
 
 INCLUDE def_axi2apb.txt
-OUTFILE PREFIX_axi2apb_mux.v
+OUTFILE PREFIX_mux.v
 
 ITER SX
-module  PREFIX_axi2apb_mux (PORTS);
+module  PREFIX_mux (PORTS);
 
 
    input 		      clk;
@@ -68,7 +68,7 @@ module  PREFIX_axi2apb_mux (PORTS);
    always @(*)
      begin
 	casex (cmd_addr[ADDR_MSB:ADDR_LSB])
-	  DEC_ADDRSX : slave_num = SLV_BITS'dSX;
+	  DEC_BITSDEC_ADDRSX : slave_num = SLV_BITS'dSX;
 	  
 	  default : slave_num = SLV_BITS'dSLAVE_NUM; //decode error
 	endcase

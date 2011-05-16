@@ -28,10 +28,10 @@
 //////////////////////////////////////////////////////////////////##>
 
 INCLUDE def_axi2apb.txt 
-  OUTFILE PREFIX_axi2apb.v
+  OUTFILE PREFIX.v
 
     ITER SX
-      module  PREFIX_axi2apb (PORTS);
+      module  PREFIX (PORTS);
 
    input              clk;
    input              reset;
@@ -73,7 +73,7 @@ ENDIF TRUE(SLAVE_NUM==1)
 
    
    CREATE axi2apb_cmd.v
-     PREFIX_axi2apb_cmd PREFIX_axi2apb_cmd(
+     PREFIX_cmd PREFIX_cmd(
 					   .clk(clk),
 					   .reset(reset),
 					   .AWGROUP_APB_AXI_A(AWGROUP_APB_AXI_A),
@@ -89,7 +89,7 @@ ENDIF TRUE(SLAVE_NUM==1)
 
    
    CREATE axi2apb_rd.v
-     PREFIX_axi2apb_rd PREFIX_axi2apb_rd(
+     PREFIX_rd PREFIX_rd(
 					 .clk(clk),
 					 .reset(reset),
 					 .GROUP_APB3(GROUP_APB3),
@@ -101,7 +101,7 @@ ENDIF TRUE(SLAVE_NUM==1)
 					 );
    
    CREATE axi2apb_wr.v
-     PREFIX_axi2apb_wr PREFIX_axi2apb_wr(
+     PREFIX_wr PREFIX_wr(
 					 .clk(clk),
 					 .reset(reset),
 					 .GROUP_APB3(GROUP_APB3),
@@ -116,7 +116,7 @@ ENDIF TRUE(SLAVE_NUM==1)
 
    
    CREATE axi2apb_ctrl.v						
-     PREFIX_axi2apb_ctrl PREFIX_axi2apb_ctrl(
+     PREFIX_ctrl PREFIX_ctrl(
 					     .clk(clk),
 					     .reset(reset),
 					     .finish_wr(finish_wr),			
@@ -133,7 +133,7 @@ ENDIF TRUE(SLAVE_NUM==1)
    
 IFDEF TRUE(SLAVE_NUM>1)
    CREATE axi2apb_mux.v
-     PREFIX_axi2apb_mux PREFIX_axi2apb_mux(
+     PREFIX_mux PREFIX_mux(
 					   .clk(clk),
 					   .reset(reset),
 					   .cmd_addr(cmd_addr),

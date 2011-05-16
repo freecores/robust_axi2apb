@@ -28,9 +28,9 @@
 //////////////////////////////////////////////////////////////////##>
 
 INCLUDE def_axi2apb.txt
-OUTFILE PREFIX_axi2apb_ctrl.v
+OUTFILE PREFIX_ctrl.v
 
-module  PREFIX_axi2apb_ctrl (PORTS);
+module  PREFIX_ctrl (PORTS);
 
 
    input              clk;
