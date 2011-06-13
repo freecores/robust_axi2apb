@@ -1,4 +1,4 @@
-##RobustVerilog project 
+PROJDIR = run 
 
 SRCFILE = axi2apb.v
 DEFFILE =
