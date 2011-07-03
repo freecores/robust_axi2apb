@@ -27,17 +27,15 @@
 ////                                                             ////
 //////////////////////////////////////////////////////////////////##>
 
-REQUIRE(1.4)
+REQUIRE(1.5)
 
 INCLUDE   def_axi2apb_static.txt  
 
 STARTUSER
   
-SWAP.GLOBAL      #FFD        #1              ## flip-flop delay
+SWAP.GLOBAL    #FFD        #1              ## flip-flop delay
 
 SWAP.USER      PREFIX      axi2apb         ## Prefix for all modules and file names
-
-SWAP.USER      SLAVE_NUM   8               ## Number of APB slaves 
 
 SWAP.USER      CMD_DEPTH   2               ## Number of AXI command FIFO
 
@@ -45,11 +43,13 @@ SWAP.USER      ADDR_BITS   24              ## AXI and APB address bits
 SWAP.USER      ID_BITS     4               ## AXI ID bits
 SWAP.USER      DEC_BITS    8               ## Address MSBits for slave decoding
 
-SWAP.USER      DEC_ADDR0   'h00    ## Slave 0 address deciding
-SWAP.USER      DEC_ADDR1   'h01    ## Slave 1 address deciding
-SWAP.USER      DEC_ADDR2   'h02    ## Slave 2 address deciding
-SWAP.USER      DEC_ADDR3   'h03    ## Slave 3 address deciding
-SWAP.USER      DEC_ADDR4   'h10    ## Slave 4 address deciding
-SWAP.USER      DEC_ADDR5   'h11    ## Slave 5 address deciding
-SWAP.USER      DEC_ADDR6   'h12    ## Slave 6 address deciding
-SWAP.USER      DEC_ADDR7   'h13    ## Slave 7 address deciding
+SWAP.USER.TRUE(SLAVE_NUM>0) DEC_ADDR0 'h00 ## Slave 0 address decoding
+SWAP.USER.TRUE(SLAVE_NUM>1) DEC_ADDR1 'h01 ## Slave 1 address decoding
+SWAP.USER.TRUE(SLAVE_NUM>2) DEC_ADDR2 'h02 ## Slave 2 address decoding
+SWAP.USER.TRUE(SLAVE_NUM>3) DEC_ADDR3 'h03 ## Slave 3 address decoding
+SWAP.USER.TRUE(SLAVE_NUM>4) DEC_ADDR4 'h10 ## Slave 4 address decoding
+SWAP.USER.TRUE(SLAVE_NUM>5) DEC_ADDR5 'h11 ## Slave 5 address decoding
+SWAP.USER.TRUE(SLAVE_NUM>6) DEC_ADDR6 'h12 ## Slave 6 address decoding
+SWAP.USER.TRUE(SLAVE_NUM>7) DEC_ADDR7 'h13 ## Slave 7 address decoding
+
+SWAP.USER      SLAVE_NUM   6               ## Number of APB slaves 

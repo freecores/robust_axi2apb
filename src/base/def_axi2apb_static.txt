@@ -29,6 +29,8 @@
 
 SWAP.GLOBAL  MODEL_NAME  AXI2APB bridge
 
+VERIFY(SLAVE_NUM in 1..8)
+
 SWAP      SLV_BITS    LOG2(EXPR(SLAVE_NUM+1)) ##one more for decerr slave
 
 LOOP      SX          SLAVE_NUM
